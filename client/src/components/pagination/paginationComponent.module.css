@@ -46,3 +46,12 @@
     box-shadow: none;
     color: #999;
   }
+  .dataContainer{ 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 50px;
+} .dataContainer #imgError{
+    width: 80%;
+    margin-bottom: 80px;
+} 

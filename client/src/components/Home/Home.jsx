@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCountries } from "../../actions/index";
+import { getCountries } from "../../actions/actions";
 import Card from "../Card/Card";
 import  PaginationComponent  from "../pagination/PaginationComponent"
+import Loading from "../Loading/Loading"
 
 const Home = () => {
     //Global States
@@ -25,11 +26,11 @@ const Home = () => {
                 Card={Card}
                 title="Countries"
                 pageLimit={5}
-                dataLimit={10}
+                countryPerPage={10}
               />
             </>
           ) : (
-           <h1>No Posts to display</h1>
+           <Loading />
           )}
 
            {/* {Array.isArray(country) ?
