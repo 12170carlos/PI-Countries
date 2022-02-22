@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { getByDetail, setLoading, resetDetail } from '../../actions/actions'
-import Loading from '../../Loading/Loading'
+import Loading from '../Loading/Loading'
 import style from './CountryDetail.module.css'
 
 const CountryDetail = () => {
@@ -12,10 +12,12 @@ const CountryDetail = () => {
   const loading = useSelector((state) => state.loading)
 
 
+
   //hooks
   const params = useParams();
   const dispatch = useDispatch();
   console.log("params:", params)
+
   /*mounting*/
   useEffect(() => {
     dispatch(getByDetail(params.id));
@@ -38,15 +40,15 @@ const CountryDetail = () => {
         :
         <div>
           <div className="imagen"> 
-            <img src={country.flags ? country.flags : null} alt= "imagen"/>
+            <img src={country.flag ? country.flag : null} alt= "imagen"/>
           </div>
 
           <div className="nombre"> 
             <h1>{country.name}</h1> 
           </div>
 
-          <div className="continente"> 
-            <h3>Continent:{country.continents}</h3> 
+          <div className="region"> 
+            <h3>Región:{country?.subregion?.region?.name}</h3> 
           </div>
 
           <div className="capital"> 
@@ -54,7 +56,7 @@ const CountryDetail = () => {
           </div>
 
           <div className="subregion"> 
-            <h3>Subregion:{country.subregion}</h3> 
+            <h3>Subregion:{country?.subregion?.name}</h3> 
           </div>
           
           <div className="area"> 

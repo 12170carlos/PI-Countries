@@ -4,6 +4,7 @@ import { getCountries } from "../../actions/actions";
 import Card from "../Card/Card";
 import  PaginationComponent  from "../pagination/PaginationComponent"
 import Loading from "../Loading/Loading"
+import { NavBar } from "../NavBar/NavBar";
 
 const Home = () => {
     //Global States
@@ -19,6 +20,7 @@ const Home = () => {
 
     return (
         <div>
+          <NavBar />
           {country.length > 0 ? (
             <>
               <PaginationComponent

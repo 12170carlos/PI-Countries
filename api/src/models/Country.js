@@ -5,9 +5,9 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('country', {
 
-    idCountry: {
-      type: DataTypes.STRING(3),
-      allowNull:false,
+    id: {
+      type: DataTypes.STRING,
+      
       primaryKey: true,
       
     },
@@ -15,21 +15,16 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    flags: {
+    flag: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Nuvola_unknown_flag.svg/1024px-Nuvola_unknown_flag.svg.png',
     },
-    continents: {
-      type: DataTypes.STRING,
-      allowNull:false,
-    },
+    
     capital: {
       type:DataTypes.STRING,
-      allowNull: false,
+     defaultValue: 'Unknown',
     },
-    subregion: {
-      type:DataTypes.STRING,
-    },
+    
     area: {
       type:DataTypes.INTEGER,
     },

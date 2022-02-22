@@ -4,6 +4,7 @@ const {
     GET_DETAIL,
     SET_LOADING,
     RESET_DETAIL,
+    ADD_NEW_ACTIVITY
 }  = require('./actions_types')
 const axios = require('axios');
 
@@ -47,3 +48,11 @@ export const resetDetail = () => {
       type: RESET_DETAIL,
     };
   };
+
+export const newActivity = (input) => {
+
+    return async function () {
+        const response = await axios.post(`${server}/activities`, input);
+        return response;
+    }
+}
