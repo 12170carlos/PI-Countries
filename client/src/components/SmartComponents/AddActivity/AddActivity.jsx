@@ -37,7 +37,7 @@ const validate = (input, e) => {
 };
 
 
-const AddNewActivity = () => {
+const AddActivity = () => {
   //Global states
   const country = useSelector((state) => state.allCountries);
   // console.log("country:", country)
@@ -234,4 +234,4 @@ const AddNewActivity = () => {
     </div>
   )
 }
-export default AddNewActivity;
+export default AddActivity;
