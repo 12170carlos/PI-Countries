@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCountries } from "../../actions/actions";
-import Card from "../Card/Card";
+import { getCountries } from "../../../redux/actions/actions";
+import Card from "../../viewComponents/Card/Card";
 import  PaginationComponent  from "../pagination/PaginationComponent"
-import Loading from "../Loading/Loading"
-import { NavBar } from "../NavBar/NavBar";
+import Loading from "../../viewComponents/Loading/Loading"
+import { NavBar } from "../../viewComponents/NavBar/NavBar";
 
 const Home = () => {
     //Global States

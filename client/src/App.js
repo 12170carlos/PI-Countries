@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home/Home';
-import CountryDetail from './components/CountryDetail/CountryDetail';
+import CountryDetail from './components/SmartComponents/CountryDetail';
 import AddNewActivity  from './components/Form/AddNewActivity';
 
 function App() {

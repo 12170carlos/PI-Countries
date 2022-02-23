@@ -3,11 +3,13 @@ import {
     GET_DETAIL,
     GET_ACTIVITIES,
     SET_LOADING,
-    RESET_DETAIL
+    RESET_DETAIL,
+    ADD_NEW_ACTIVITY
 } from "../actions/actions_types"
 const initialState = {
     countries: [],
     allCountries: [],
+    allActivities: [],
     detailed: {},
     loading: true,
 } 
@@ -34,6 +36,17 @@ export default function rootReducer(state= initialState, action){
             return {
                 ...state,
                 detailed: {},
+            }
+        case GET_ACTIVITIES:
+            return {
+                ...state,
+                allActivities: action.payload,
+
+            }
+        case ADD_NEW_ACTIVITY:
+            return {
+                ...state,
+                allActivities: [...state.allActivities, action.payload]
             }
     
         default:

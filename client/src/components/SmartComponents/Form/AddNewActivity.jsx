@@ -184,7 +184,7 @@ const AddNewActivity = () => {
               
               >
                 {
-                  ["All","Summer","Winter","Autum","Spring"].map((el) =>
+                  ["All","Summer","Winter","Autumn","Spring"].map((el) =>
                    <option key={el} value={el}>{el}</option>
                   )
                 }

@@ -116,3 +116,39 @@
     border-style: solid;
     border-color: transparent transparent transparent #e7e7e7;
   }
+
+  .article {
+    transition: background-color 0.4s;
+  }
+  .flag img {
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .details {
+    border-radius: 0 0 5px 5px;
+    background-color: var(--article-color);
+    margin: -10px 0 30px;
+    padding: 20px;
+    color: var(--text-color);
+    transition: background-color 0.4s;
+  }
+  
+  .details.light-theme {
+    background-color: var(--light-mode-background);
+    color: var(--light-mode-text);
+  }
+  
+  .details h4 {
+    margin: 10px 0;
+  }
+  
+  .details h4 span {
+    font-weight: 300;
+  }
+  .details h4 {
+    margin: 10px 0;
+  }
+  
+  .details h4 span {
+    font-weight: 300;
+  }

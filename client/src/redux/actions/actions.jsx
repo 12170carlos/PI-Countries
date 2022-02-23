@@ -56,3 +56,16 @@ export const newActivity = (input) => {
         return response;
     }
 }
+export function getAllActivities () {
+    return async function(dispatch){
+        try {
+            const act = await axios.get(`${server}/activities`);
+            dispatch({
+                type: GET_ACTIVITIES,
+                payload:act.data,
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
