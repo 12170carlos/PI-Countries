@@ -46,16 +46,5 @@
     box-shadow: none;
     color: #999;
   }
-  .dataContainer{ 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 50px;
-} .dataContainer #imgError{
-    width: 80%;
-    margin-bottom: 80px;
-} 
+ 
 
-.countries {
-  padding: 0 50px 50px;
-}

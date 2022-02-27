@@ -4,7 +4,11 @@ const {
     GET_DETAIL,
     SET_LOADING,
     RESET_DETAIL,
-    ADD_NEW_ACTIVITY
+    ADD_NEW_ACTIVITY,
+    GET_ALL_REGIONS,
+    GET_FILTERS,
+    GET_ORDER,
+    SEARCH_BY_NAME
 }  = require('./actions_types')
 const axios = require('axios');
 
@@ -20,12 +24,23 @@ export const getCountries = () => {
     }
 }
 
+export const searchCountry = (input) => {
+    return async function (dispatch) {
+      const searchName = await axios.get(`${server}/countries?name=${input}`);
+      dispatch({
+        type: SEARCH_BY_NAME,
+        payload: searchName.data,
+      })
+    }
+  };
+
+
 export const getByDetail = (id) => {
     return async function (dispatch) {
         try {
             
             let detail = await axios.get(`${server}/countries/${id}`);
-            console.log("detail:", detail.data);
+           
             return dispatch({
                 type: GET_DETAIL,
                 payload: detail.data,
@@ -69,3 +84,49 @@ export function getAllActivities () {
         }
     }
 }
+
+export function getAllRegions () {
+    return async function(dispatch) {
+        try {
+            const reg = await axios.get(`${server}/regions`);
+            dispatch({
+                type: GET_ALL_REGIONS,
+                payload: reg.data,
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export function getFilters(payload) {
+	return  function(dispatch) {
+		try {
+			const res = axios.get(`${server}/regions`);
+			dispatch({ type: GET_FILTERS, payload, res});
+		} catch (err) {
+			return console.error(err);
+		}
+	}
+}
+
+
+
+// export const getOrder = (option) => {
+//     return {
+//         type: GET_ORDER,
+//         payload: option
+//     }
+// }
+export const getOrder = (option) => {
+    return {
+      type: GET_ORDER,
+      payload: option,
+    };
+  };
+  
+  export const filterBy = (diet) => {
+    return {
+      type: GET_FILTERS,
+      payload: diet,
+    };
+  };

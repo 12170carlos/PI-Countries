@@ -49,7 +49,7 @@ const loadCountries = async () => {
             id: cca3
           },
           defaults: {
-            name: name.official,
+            name: name.common,
             flag: flags ? flags[1] : null,
             capital: capital ? capital[0] : null,
             population,

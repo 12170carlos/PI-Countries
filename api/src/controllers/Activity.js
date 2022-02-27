@@ -40,12 +40,12 @@ const postActivity = (req,res, next) =>{
 }
 
 
-const getActivities = (res) => {
+const getActivities = (req, res, next) => {
     return Activity.findAll()
     .then((activities) => {
         return res.json(activities)
     })
-    .cath((err) => next(err))
+    .catch((err) => next(err))
 }
 module.exports = {
     getActivities,

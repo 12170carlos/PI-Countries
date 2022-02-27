@@ -2,8 +2,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { getByDetail, setLoading, resetDetail } from '../../actions/actions'
-import Loading from '../Loading/Loading'
+import { getByDetail, setLoading, resetDetail } from '../../../redux/actions/actions'
+import Loading from '../../viewComponents/Loading/Loading'
 import style from './CountryDetail.module.css'
 
 const CountryDetail = () => {
@@ -16,7 +16,7 @@ const CountryDetail = () => {
   //hooks
   const params = useParams();
   const dispatch = useDispatch();
-  console.log("params:", params)
+  //console.log("params:", params)
 
   /*mounting*/
   useEffect(() => {
@@ -66,15 +66,18 @@ const CountryDetail = () => {
           <div className="population"> 
             <h3>Population:{country.population}</h3> 
           </div>
-          {Array.isArray(country.activities) ? (
-            country.activities.map((act) => (
-              <div className="activities"> 
-                <h3  key={act.name}>Activities:{act.name} /</h3> 
+          
+          <div>
+             
+              {country.activities?.map((act,i) => {
+                return (
+                <div className="activities" key={i}> 
+                  <h3> key={i} {act} /</h3> 
+                </div>
+                )
+              })}
+           
           </div>
-            ))
-          ): (
-            <h3>Activities:{country.activities}</h3>
-          )}
           
           
         </div>

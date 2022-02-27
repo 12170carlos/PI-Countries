@@ -6,7 +6,7 @@ export default function LandingPage()  {
     return (
         <div className={style.image}>
             <div className={style.containerBtn}> 
-            <Link to='/recipes' className={style.link}><button id={style.btn}>Start Now</button></Link>
+            <Link to='/countries' className={style.link}><button id={style.btn}>Start Now</button></Link>
             </div>
            
         </div> 

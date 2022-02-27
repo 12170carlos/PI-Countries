@@ -4,17 +4,19 @@ const { Country, Activity, Subregion, Region } = require('../db');
 
 
 
-const getAllCountries =  (req, res) => {
+const getAllCountries =  (req, res,next) => {
     
 
-        const { name } = req. query;
+        const { name} = req. query;
 
         if (name){
             return Country.findAll({
                 where: {
-                    name: {
-                        [Op.iLike]:  '%' + name + '%'
-                    }  
+                    name: 
+                    {
+                        [Op.iLike]:  '%' + name + '%'                
+                    }
+                        
                 },
                 include: {
                     model: Subregion,

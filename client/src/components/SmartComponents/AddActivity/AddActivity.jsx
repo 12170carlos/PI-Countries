@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router';
-import { getCountries, newActivity } from '../../actions/actions';
-import { NavBar } from '../NavBar/NavBar';
-import style from "./AddNewActivity.module.css"
+import { getCountries, newActivity } from '../../../redux/actions/actions';
+import { NavBar } from '../../viewComponents/NavBar/NavBar';
+import style from "./AddActivity.module.css"
 
 
 //methods
