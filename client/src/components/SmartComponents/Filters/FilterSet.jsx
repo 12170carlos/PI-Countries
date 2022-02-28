@@ -1,115 +1,96 @@
 import React from "react";
 import { useEffect } from "react";
-import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router";
-import {  getAllActivities, getAllRegions, getFilters } from "../../../redux/actions/actions";
-//import { sortRecipes } from "../../actions/actions";
-//import style from "./Filters.module.css";
+
+import { filterByActivity, filterByContinent, getAllActivities, getOrder }  from "../../../redux/actions/actions";
+
 
 export default function FilterSet() {
   //hooks
   const dispatch = useDispatch();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const query  = new URLSearchParams(location.search);
-
+  
+  
   const filterOption = ["a-z", "z-a", "population-higer", "population-lower"];
-  
+  const activities = useSelector((state) => state.allActivities)
 
-  
-	//global states
-	const activities = useSelector(state => state.allActivities);
-	const regions = useSelector(state => state.allRegions);
-
-//local states
-	const [filters, setFilters] = useState({
-		region: '',
-		activity: '',
-		order: ''
-	});
 
   useEffect(() => {
-		dispatch(getAllActivities());
-		dispatch(getAllRegions());
-	}, [dispatch])
+    dispatch(getAllActivities())
+  }, [])
   
-  
-	const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(getFilters(filters))
+  const handleOrder = (e) => {
+    e.preventDefault()
+    dispatch(getOrder(e.target.value))
+    
   }
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   query.set('region', filters.region);
-  //   query.set('activity', filters.activity);
-  //   query.set('order', filters.order);
-  //   query.set('search', '');
-  //   query.set('page', 1);
+ const handleChange = (e) => {
+  e.preventDefault()
+  document.getElementById('activity').value='default'
+  dispatch(filterByContinent(e.target.value))
+ }
 
-  // };
+ 
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setFilters({
-			...filters,
-			[e.target.name]: e.target.value
-		})
-    
-    
-  };
-
+  
   return (
     <>
-      <form className="form" id="form" onSubmit={(e) => handleSubmit(e)}>
+      <form className="form" id="form" >
           
-          <select name="region" id="region" onChange={(e) => handleChange(e)}>
-            <option key="filter" hidden defaultValue="region">
+          <select
+           name="FILTER"  
+           defaultValue="select"
+           onChange={(e) => handleOrder(e)}
+           className=""
+           >
+
+            <option
+              key="filter"
+              hidden
+              defaultValue="filter"
+              className=""
+            >   
               
-            Filter By Region
+            Filter 
             </option>
-            {regions.map((o) => {
+            {filterOption.map((o) => {
               return (
-                <option key={o.name} value={o.name} className="">
-                  {o.name}
+                <option key={o} value={o} className="">
+                  {o.toUpperCase()}
 
                 </option>
               )
             })}
           </select>
-
-          <select name="activity" id="activity" onChange={(e) => handleChange(e)}>
-            <option key="filter" hidden defaultValue="activity">
-
-            Filter By Activities
-            </option>
-              {activities.map((a) => {
-                return (
-                  <option key={a.name} value={a.name} className="">
-
-                    {a.name}
-            </option>
-                )
-              })}
+         
+          <select 
+          name="" 
+          id="continent"
+          onChange={(e) => handleChange(e)}
+          >
+            <option value="default">Selection Continent</option>
+            <option value="Asia">Asia</option>
+            <option value="Americas">Americas</option>
+            <option value="Africa">Africa</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+            <option value="Antarctic">Antarctic</option>
           </select>
 
-        <div className="select">
-          <select name="order" id="order" onChange={(e) => handleChange(e)}>
-            <option key="order" hidden defaultValue="order">
-              Order By
-            </option>
-            {filterOption.map((option) => {
-              return (
-                <option key={option} value={option} className="">
-                  {option.toUpperCase()}
-                </option>
-              );
+
+          <select 
+          name="acivity" 
+          id="activity"
+          onChange={(e) => {dispatch(filterByActivity(e.target.value)) 
+            document.getElementById('continent').value='default'}}
+          >
+            <option value="default">Select Activity</option>
+            {activities?.map(c => {
+              return(
+                <option key={c.id} value={c.name}>{c.name}</option>
+              )
             })}
           </select>
-            
-         
-        </div>
-        <button type="submit">Filter</button>
       </form>
     </>
   );

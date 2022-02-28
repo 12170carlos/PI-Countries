@@ -59,13 +59,9 @@ const getCountriesById  =  (req, res, next) => {
     let idCountry = req.params.idCountry;
     
     return Country.findByPk(idCountry.toUpperCase(), {
-        include: [{
-            model: Activity,
-            
-            through: {
-                attributes: [],
-            }
-        }, {
+        include: [
+            Activity,
+         {
             model: Subregion,
             attributes: ['name'],
             include: {

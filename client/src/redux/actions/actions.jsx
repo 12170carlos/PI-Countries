@@ -7,12 +7,23 @@ const {
     ADD_NEW_ACTIVITY,
     GET_ALL_REGIONS,
     GET_FILTERS,
+    GET_FILTERS_CONTINENT,
+    GET_FILTERS_ACTIVITY,
     GET_ORDER,
-    SEARCH_BY_NAME
+    SEARCH_BY_NAME,
+    SET_ALL_COUNTRIES
 }  = require('./actions_types')
 const axios = require('axios');
 
 const server = "http://localhost:3001";
+
+
+export const setAllCountries = (payload) => {
+    return {
+        type: SET_ALL_COUNTRIES,
+        payload,
+    }
+}
 
 export const getCountries = () => {
     return async function (dispatch) {
@@ -26,11 +37,17 @@ export const getCountries = () => {
 
 export const searchCountry = (input) => {
     return async function (dispatch) {
-      const searchName = await axios.get(`${server}/countries?name=${input}`);
-      dispatch({
-        type: SEARCH_BY_NAME,
-        payload: searchName.data,
-      })
+        try {
+            
+            const searchName = await axios.get(`${server}/countries?name=${input}`);
+            dispatch({
+              type: SEARCH_BY_NAME,
+              payload: searchName.data,
+            })
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
   };
 
@@ -109,14 +126,6 @@ export function getFilters(payload) {
 	}
 }
 
-
-
-// export const getOrder = (option) => {
-//     return {
-//         type: GET_ORDER,
-//         payload: option
-//     }
-// }
 export const getOrder = (option) => {
     return {
       type: GET_ORDER,
@@ -124,9 +133,15 @@ export const getOrder = (option) => {
     };
   };
   
-  export const filterBy = (diet) => {
+  export const filterByContinent = (payload) => {
     return {
-      type: GET_FILTERS,
-      payload: diet,
+      type: GET_FILTERS_CONTINENT,
+      payload,
+    };
+  };
+  export const filterByActivity = (payload) => {
+    return {
+      type: GET_FILTERS_ACTIVITY,
+      payload,
     };
   };

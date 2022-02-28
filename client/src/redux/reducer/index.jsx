@@ -1,4 +1,4 @@
-import { GET_ORDER } from "../actions/actions_types";
+import { GET_ORDER,  } from "../actions/actions_types";
 
 import {
     GET_COUNTRIES,
@@ -9,7 +9,10 @@ import {
     ADD_NEW_ACTIVITY,
     GET_ALL_REGIONS,
     SEARCH_BY_NAME,
-    GET_FILTERS
+    GET_FILTERS_CONTINENT,
+    GET_FILTERS_ACTIVITY,
+    SET_ALL_COUNTRIES
+   
 } from "../actions/actions_types"
 const initialState = {
     countries: [],
@@ -40,6 +43,12 @@ export default function rootReducer(state= initialState, action){
                 allCountries: action.payload,
                 };
             }
+        case SET_ALL_COUNTRIES:
+            return {
+                ...state,
+                allCountries: action.payload
+            }
+
 
         case GET_DETAIL:
             return {
@@ -72,40 +81,44 @@ export default function rootReducer(state= initialState, action){
                 ...state,
                 allActivities: [...state.allActivities, action.payload]
             }
-        case GET_FILTERS:
-            const f = action.payload;
-           
-            const regionFiltered = f.region !== '' ? state.allCountries.filter(ele => ele.subregion.region.name.trim().toLowerCase() === f.region.trim().toLowerCase()) : [...state.allCountries];
-            console.log("regionFiltered:", regionFiltered)
-            const activityFiltered = f.activity !== '' ? state.allCountries.filter(ele => ele.activities.some(a =>a.name  === f.activity)) : [...state.allCountries];
-            console.log("state.allCountries:", state.allCountries)
-            const matches = [];
+        case GET_FILTERS_CONTINENT:
             
-            for (let i = 0; i < regionFiltered.length; i++){
-                for (let j = 0; j < activityFiltered.length; j++){
-                    if (regionFiltered[i].id === activityFiltered[i].id){
-                        matches.push(regionFiltered[i])
-                    }
-                }
-            }
-
-            if (f.order === 'a-z'){
-                matches.sort((a,b) => a.name.localCompare(b.name));
-
-            }
-            else if (f.oredr === 'z-a') {
-                matches.sort((a,b) => b.name.localCompare(a.name))
-            }
-            else if (f.order === 'population-lower') {
-                matches.sort((a,b) => a.population - b.population)
-            }
-            else if (f.order === 'population-higer') {
-                matches.sort((a,b) => b.population - a.population)
-            }
+            state.allCountries = state.countries
+          
             return {
                 ...state,
-                countries:matches
+                allCountries: state.allCountries.filter(e => e.subregion.region.name === action.payload)
 
+            }
+        case GET_FILTERS_ACTIVITY:
+            state.allCountries = state.countries
+          
+            return {
+                ...state,
+                allCountries: state.allCountries.filter(e => e.activities.find(ele => ele.name === action.payload))
+
+            }
+            
+        case GET_ORDER:
+            let sorted = [...state.allCountries];
+            let options = {
+              "a-z": function (a, b) {
+                return new Intl.Collator().compare(a.name, b.name);
+              }, //equivale a LocalCompare pero para grandes matrices
+              "z-a": function (a, b) {
+                return new Intl.Collator().compare(b.name, a.name);
+              },
+              "population-lower": function (a, b) {
+                return a.population - b.population;
+              },
+              "population-higer": function (a, b) {
+                return b.population - a.population;
+              },
+            };
+            sorted.sort((a, b) => options[action.payload](a, b));
+            return {
+                ...state,
+                allCountries: sorted,
             }
             
     //     case GET_ORDER:
@@ -131,6 +144,7 @@ export default function rootReducer(state= initialState, action){
     //     allCountries: sorted,
     //   };
           
+       
           default:
             return state;
         }

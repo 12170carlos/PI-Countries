@@ -144,8 +144,12 @@ header.light-theme {
   padding: 0 50px 50px;
 }
 
-.countries article {
-  transition: background-color 0.4s;
+
+.countriesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 50px;
 }
 
 .countries .flag img {
@@ -174,6 +178,59 @@ header.light-theme {
   font-weight: 300;
 }
 
+.activities {
+  border:2px solid #fff;
+}
+
+/*pagination*/
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginationItem {
+  background: #fff;
+  border: 2px solid #666;
+  padding: 10px 15px;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  position: relative;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.paginationItem span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prev,
+.next {
+  background: #fff;
+  border: none;
+  padding: 10px;
+  color: blue;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.paginationItem.active {
+  border: 1px solid #888;
+  color: #888;
+  pointer-events: none;
+}
+
+.prev.disable,
+.next.disable {
+  pointer-events: none;
+  box-shadow: none;
+  color: #999;
+}
 
 /* Media queries */
 @media (min-width: 640px) {

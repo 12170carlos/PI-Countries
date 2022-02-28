@@ -1,30 +1,35 @@
 
-import React, { useState } from "react";
+import axios from "axios";
+import React from "react";
 
 import { useDispatch } from "react-redux";
-import { searchCountry } from "../../../redux/actions/actions";
+import { setAllCountries } from "../../../redux/actions/actions";
+const server = "http://localhost:3001";
+
 
 export default function SearchBar() {
   const dispatch = useDispatch();
 
-  const [input, setInput] = useState("");
+  
 
-  const handleInput = (e) => {
-    e.preventDefault();
-    setInput(e.target.value);
-  };
-  const handleSubmit = (input, e) => {
-    e.preventDefault();
-    e.target.value = "";
-    dispatch(searchCountry(input));
-  };
-  return (
-    <form onSubmit={(e) => handleSubmit(input, e)}>
+  const findCountry = async(e) => {
+    try {
       
+      const searchName = await axios.get(`${server}/countries?name=${e.target.value}`)
+      dispatch(setAllCountries(searchName.data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+   
+  
+  return (
+    <form >
+     
       <input
         className="input"
         type="text"
-        onChange={(e) => handleInput(e)}
+        onChange={(e) => findCountry(e)}
         placeholder="Search Country"
       />
     </form>

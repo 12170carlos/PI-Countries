@@ -49,8 +49,8 @@ const AddActivity = () => {
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: "",
-    difficulty: "",
-    duration: "",
+    difficulty: 0,
+    duration: 0,
     season: "",
     countries: [],
   })
@@ -85,10 +85,13 @@ const AddActivity = () => {
     }
     
   }
-  function handleSelect(e) {
+  
+  function handleSelect(id) {
+    
     setInput({
       ...input,
-      countries: Array.from(e.target.seletedOptions, option => option.value).join(',')//[...input.countries, e.target.value]
+      countries: input.countries.indexOf(id) === -1 ? [...input.countries, id] : [...input.countries]
+
     });
   };
 
@@ -97,17 +100,14 @@ const AddActivity = () => {
       ...input,
       [e.target.name]: e.target.value
     })
-    setErrors(validate({
-      ...input,
-      [e.target.name]: e.target.value
-    }))
+    
   }
   
-  function handleDelete(e) {
-    e.preventDefault();
+  function handleDelete(country) {
+   
     setInput({
       ...input,
-      countries: input.countries.filter((c) => c !== e)
+      countries: input.countries.filter((c) => c !== country)
     });
   }
   function isDisable(errors) {
@@ -179,40 +179,31 @@ const AddActivity = () => {
             <div className={style.grupo}>
               <select 
               className={style.input} 
+              value={input.season}
               name='season'
               onChange={(e) => handleSelectSeason(e)}
               
               >
-                {
-                  ["All","Summer","Winter","Autumn","Spring"].map((el) =>
-                   <option key={el} value={el}>{el}</option>
-                  )
-                }
+               <option value="All">All</option>
+               <option value="Winter">Winter</option>
+               <option value="Summer">Summer</option>
+               <option value="Autumn">Autumn</option>
+               <option value="Sping">Sping</option>
               </select>
 
             </div>
 
             <div className={style.grupo}>
-              <select 
-              className={style.input} 
-              onChange={(e) => handleSelect(e)}
-              multiple>
-                <option value=""></option>
-                {
-                  country.map((c) => 
-                    <option value={c.name} key={c.name}>
-                      
-                      {c.name}
-                    </option>
-                  )
-                }
-
-              </select>
+                <div style={{overflow:'auto', height:'200px'}}>
+                  {
+                    country?.map(c => (<div key={c.id}>{c.name} <span onClick={(e) => handleSelect(c.id)}>Agregar</span></div>))
+                  }
+                </div>
                 {
                   input.countries.map((c, i) => (
                     <ul key={i}>
-                      <li>{c}</li>
-                      <button onClick={(e) => handleDelete(e,c)}>X</button>
+                      <li>{c} <span onClick={(e) => handleDelete(c)}>X</span> </li>
+                      
                     </ul>
                   ))
                 }

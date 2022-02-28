@@ -27,12 +27,11 @@ const postActivity = (req,res, next) =>{
 
     .then(async ([responseAct, created]) => {
         if (countries) {
-            let arrayCountries = countries.split(',');
-            for (let id of arrayCountries){
-                let countryRes = await Country.findByPk(id)
-                await responseAct.addCountry(arrayCountries);
-                await countryRes.addActivity(responseAct)
+            countries.forEach(async(e) =>{
+                await responseAct.addCountry(e);
             }
+                );
+            
         }
         return res.json(responseAct)
     })

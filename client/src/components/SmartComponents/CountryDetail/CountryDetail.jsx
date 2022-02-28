@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { getByDetail, setLoading, resetDetail } from '../../../redux/actions/actions'
 import Loading from '../../viewComponents/Loading/Loading'
-import style from './CountryDetail.module.css'
+
 
 const CountryDetail = () => {
   //Global state
@@ -72,7 +72,9 @@ const CountryDetail = () => {
               {country.activities?.map((act,i) => {
                 return (
                 <div className="activities" key={i}> 
-                  <h3> key={i} {act} /</h3> 
+                  <h3> {act.name} </h3> 
+                  <h3> {act.difficulty} </h3> 
+
                 </div>
                 )
               })}

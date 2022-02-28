@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import style from "./Card.module.css";
+import style from "./Cards.module.css";
 
-export default function Cards({ id, name, flag, subregion, population, region }) {
-  //const { id, name, flag, population, subregion } = props.data;
+export default function Cards(props) {
+  const { id, name, flag, population, subregion } = props.data;
   return (
     <div className={style.containerCard}>
       <div className={style.imgContainer}>

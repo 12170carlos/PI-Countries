@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
-
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 //import { useLocation, useNavigate } from "react-router";
 import style from './PaginationComponent.module.css'
@@ -17,49 +16,7 @@ export default function PaginationComponent({
 
 }) {
 
-  //hooks
-  // const countriesPerPage = 10;
 
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // const params = new URLSearchParams(location.search);
-
-  // let currentPage = parseInt(params.get('page')) || 1;
-
-  // const countries = useSelector(state => state.countries);
-
-  // let totalPages = Math.ceil(countries.length / countriesPerPage);
-
-  // const handlePagination = (pageNumber) => {
-  //   params.get('page', pageNumber);
-  //   navigate({ search:params.toString() })
-  // }
-
-  // return (
-  //   <div>
-  //     <button className="" onClick={() => handlePagination(1)}>
-  //       First
-  //     </button>
-
-  //     {currentPage - 3 > 0 && 
-  //       <button onClick={() => handlePagination(currentPage - 3)}> {currentPage - 3}</button>};
-  //     {currentPage - 2 > 0 && 
-  //       <button onClick={() => handlePagination(currentPage - 2)}> {currentPage - 2}</button>};
-  //     {currentPage - 1 > 0 && 
-  //       <button onClick={() => handlePagination(currentPage - 1)}> {currentPage - 1}</button>};
-
-  //     <label className=""> {currentPage}</label>
-
-  //     {currentPage + 3 > 0 && 
-  //       <button onClick={() => handlePagination(currentPage + 3)}> {currentPage + 3}</button>};
-  //     {currentPage + 2 > 0 && 
-  //       <button onClick={() => handlePagination(currentPage + 2)}> {currentPage + 2}</button>};
-  //     {currentPage + 1 > 0 && 
-  //       <button onClick={() => handlePagination(currentPage + 1)}> {currentPage + 1}</button>};
-
-  //       <button className="" onClick={() => handlePagination(totalPages)}></button>
-  //   </div>
-  // )
 
   
   const [currentPage, setcurrentPage] = useState(1);
@@ -94,8 +51,15 @@ export default function PaginationComponent({
 
   const getPaginationGroup = () => {
     let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
-    return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
+    
+    return new Array(Math.ceil(data.length / 10) !== 25 ? Math.ceil(data.length / 10) : pageLimit ).fill().map((_, idx) => start + idx + 1);
   };
+
+  useEffect(() => {
+    setPages(Math.ceil(data.length / 10))
+    console.log(pages)
+    setcurrentPage(1)
+  }, [data])
 
  
   return (
@@ -111,11 +75,11 @@ export default function PaginationComponent({
              it consist of next and previous buttons
              along with page numbers, in our case, 5 page numbres at a time
               */}
-      <div className={style.pagination}>
+      <div className="pagination">
         {/* previous button */}
         <button
           onClick={gotToPrevPage}
-          className={`style.prev ${currentPage === 1 ? "disable" : ""}`}
+          className={`prev ${currentPage === 1 ? "disable" : ""}`}
         >
           prev
         </button>
@@ -125,7 +89,7 @@ export default function PaginationComponent({
           <button
             key={index}
             onClick={changePage}
-            className={`style.paginationItem ${
+            className={`paginationItem ${
               currentPage === item ? "active" : null
             }`}
           >

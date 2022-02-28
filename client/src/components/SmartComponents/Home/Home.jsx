@@ -1,3 +1,4 @@
+  
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCountries } from "../../../redux/actions/actions";
@@ -57,7 +58,6 @@ const Home = () => {
                         )
                     })
                     : (<h1>Not found</h1>
-
                     )}    */}
         </div>
       );
