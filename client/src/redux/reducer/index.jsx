@@ -30,8 +30,8 @@ export default function rootReducer(state= initialState, action){
         case GET_COUNTRIES:
             return {
                 ...state,
-                currentCountries: action.payload,
-                allCountries:action.payload,
+               allCountries:action.payload,
+               currentCountries: action.payload,
             };
         case SEARCH_BY_NAME:
             if (!action.payload.length) {

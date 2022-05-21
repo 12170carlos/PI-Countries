@@ -1,6 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { filterByContinent } from "../../../redux/actions/actions";
+import './PaginationComponent.css'
+
+
+
 
 export default function PaginationComponent({
  
@@ -15,8 +20,11 @@ export default function PaginationComponent({
 
   console.log("country:", country)
   const [pages, setPages] = useState(Math.round(country.length / countryPerPage));
+
+  
   
   function goToNextPage() {
+    console.log("pages:", pages)
     
     setCurrentPage((page) => page + 1);
   }
@@ -33,16 +41,18 @@ export default function PaginationComponent({
 
  useEffect(() => {
   setPages(Math.ceil(country.length / 10))
+
   
   setCurrentPage(1)
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [country])
 
-  return (
+
+  return ( 
     <>
      
       
-      <div className="pagination">
+      <div className="paginationWrap">
         {/* previous button */}
         <button
           onClick={gotToPrevPage}
@@ -68,6 +78,8 @@ export default function PaginationComponent({
         {/* next button */}
         <button
           onClick={goToNextPage}
+
+         
           
           className={`next ${currentPage === pages ? "disable" : ""}`}
         >

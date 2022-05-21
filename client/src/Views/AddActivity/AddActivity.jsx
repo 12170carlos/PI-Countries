@@ -224,66 +224,6 @@ const AddActivity = () => {
     </div>
   )
 
-  // return (
-  //   <div className={s.container}>
-	// 		<form className={s.activityForm} onSubmit={(ev) => handleSubmit(ev)}>
-	// 			<h2 className={s.addMargin}>Activity Form</h2>
-	// 				<div>
-	// 					<div>
-	// 						<label> Create new activity: </label>
-	// 					</div>
-	// 				</div>
-	// 				<div>
-	// 					{['name','difficult','duration'].map((el) => 
-	// 						<div key={el}>
-	// 							<input 
-	// 								className={s.input}
-	// 								type='text' 
-	// 								autoComplete='off' 
-	// 								placeholder={el[0].toUpperCase() + el.slice(1)}
-	// 								name={el} 
-	// 								value={input[el]} 
-	// 								onChange={(e) => handleInput(e)}
-	// 							/>
-	// 							{el === 'difficult' && <label> 0-5</label>}
-	// 							{el === 'duration' && <label> in minutes</label>}
-	// 						</div>
-	// 					)}
-	// 					<div>
-	// 						<label>Season: </label>
-	// 						<select className={s.selectcss} name='season' onChange={(e) => handleInput(e)}>
-	// 							{['All','Summer','Winter','Spring','Autnum'].map((el) =>
-	// 								<option key={el} value={el}>{el}</option>
-	// 							)}
-	// 						</select>
-	// 					</div>
-	// 				</div>
-	// 			<div >
-	// 				<label>Countries related to this activity:</label> <br />
-	// 				<select className={s.selectcssc} onChange={(ev) => handleSelect(ev)} multiple>
-	// 					<option value=""></option>
-						
-	// 					{
-	// 						country?.map((el) => 
-	// 							<option 
-	// 								key={el.id} 
-	// 								value={el.id}
-	// 							>{el.name}</option>
-	// 						)
-	// 					}
-
-	// 				</select> <br />
-	// 				<label className={s.smallLetter}>Hold down the Ctrl button to select multiple options.</label>
-	// 			</div>
-	// 			<br/>
-	// 			{ 
-	// 				errors ? <p className={s.errMsg}>{errors}</p> : <button className={s.btn} type='submit'>Add</button>
-	// 			}
-	// 		</form>
-	// 		<br />
-			
-	// 	</div>
-	// )
 
 }
   

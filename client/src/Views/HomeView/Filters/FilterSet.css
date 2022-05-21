@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+.form{ 
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(236 153 75);   
+}
+.form select{ 
+    text-decoration: none;
+    background-color: rgb(115, 119, 123);
+    color: white;
+    padding: 10px;
+    margin: 3px;
+    border: 3px solid black;
+    border-radius: 5px;
+    transition: .1s;
+    width: 150px;
+}
+.goBack {
+	padding: 6px;
+	width: 120px;
+	border: none;
+	border-radius: 10px;
+	font-size: 16px;
+	font-family: 'calibri';
+	margin: 10px;
+	background-color: #F2F3F4;
+}
+
+.goBack:hover {
+	background-color: #8a8a8a;
+}
+
+.button{
+    text-decoration: none;
+    background-color: rgb(115, 119, 123);
+    color: white;
+    padding: 10px;
+    margin: 3px;
+    border: 3px solid black;
+    border-radius: 5px;
+    transition: .1s;
+    width: 150px;
+}
+
+.button:hover{
+    background-color: white;
+    color: black;
+}

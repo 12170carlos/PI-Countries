@@ -1,5 +1,5 @@
 .container {
-	background-image:linear-gradient(to right bottom, #0c0c0c65, #f8f7f667), url('../../assets/mapa.jpg');
+	background-image:linear-gradient(to right bottom, #0c0c0c65, #f8f7f667), url('../../assets/fondo.jpg');
 	background-size: cover;
 	height:  100%;
 	display: flex;
@@ -9,7 +9,6 @@
 }
 
 .activityForm {
-	background-color: #FEF5E7;
 	height: 500px;
 	width: 400px;
 	font-family: 'calibri';
@@ -19,7 +18,7 @@
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 20px;
-	background-color: #f6fa06d2;
+	background-color: rgb(115, 119, 123);
 	border-radius: 20px;
 }
 

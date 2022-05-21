@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router';
 import { getCountries, newActivity,getAllActivities } from '../../redux/actions/actions'
+import { AddCountryFormWrapper, AddCountryWrapper } from '../../Styled/AddCountry';
 import s from "./AddActivity.module.css"
 
 
@@ -85,8 +86,8 @@ const dispatch = useDispatch();
 	
 	return (
 
-		<div className={s.container}>
-			<form className={s.activityForm} onSubmit={(ev) => handleSubmit(ev)}>
+		<AddCountryWrapper>
+			<AddCountryFormWrapper onSubmit={(ev) => handleSubmit(ev)}>
 				<h2 className={s.addMargin}>Activity Form</h2>
 					<div>
 						<div>
@@ -139,10 +140,9 @@ const dispatch = useDispatch();
 				{ 
 					error ? <p className={s.errMsg}>{error}</p> : <button className={s.btn} type='submit'>Add</button>
 				}
-			</form>
+			</AddCountryFormWrapper>
 			<br />
-			<button className={s.btn} onClick={() => navigate(-1)}>Go Back</button>
-		</div>
+			</AddCountryWrapper>
 	)
 }
 

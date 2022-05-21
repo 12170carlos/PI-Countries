@@ -27,10 +27,10 @@ export const setAllCountries = (payload) => {
 
 export const getCountries = () => {
     return async function (dispatch) {
-        const country = await axios.get(`${server}/countries`);
+        const { data } = await axios.get(`${server}/countries`);
         dispatch({
             type: GET_COUNTRIES,
-            payload: country.data,
+            payload: data,
         })
     }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByActivity, filterByContinent, getAllActivities, getCountries, getOrder }  from "../../../redux/actions/actions";
-import style from './FilterSet.module.css'
+import './FilterSet.css'
 
 
 export default function FilterSet() {
@@ -47,10 +47,11 @@ export default function FilterSet() {
       <form className="form" id="form" >
           
           <select
+    
            name="ORDER"  
            defaultValue="select"
            onChange={(e) => handleOrder(e)}
-           className=""
+           className="select"
            id="order"
            >
 
@@ -59,14 +60,14 @@ export default function FilterSet() {
               hidden
               defaultValue="default"
               value="default"
-              className=""
+              className="option"
             >   
               
             Order By 
             </option>
             {filterOption.map((o) => {
               return (
-                <option key={o} value={o} className="">
+                <option key={o} value={o} className="option">
                   {o.toUpperCase()}
 
                 </option>
@@ -75,6 +76,7 @@ export default function FilterSet() {
           </select>
          
           <select 
+          className="continent"
           name="" 
           id="continent"
           onChange={(e) => handleChange(e)}
@@ -90,7 +92,8 @@ export default function FilterSet() {
 
 
           <select 
-          name="acivity" 
+          className="button"
+          name="activity" 
           id="activity"
           onChange={(e) => {dispatch(filterByActivity(e.target.value)) 
             document.getElementById('continent').value='default'
@@ -106,7 +109,7 @@ export default function FilterSet() {
             
 
           
-           <button className="btn" onClick={() =>{handleClear()}}>
+           <button className="button" onClick={() =>{handleClear()}}>
            Clear Filters
            
           </button>
