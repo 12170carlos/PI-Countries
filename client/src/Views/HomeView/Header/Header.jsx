@@ -1,5 +1,6 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import style from './Header.module.css'
 
 const Header = () => {
   const changeTheme = () => {
@@ -18,7 +19,7 @@ const Header = () => {
   };
   return (
     <>
-      <header className="header">
+      <header className={style.header}>
         <div>
           <h1>My Country!</h1>
         </div>

@@ -7,11 +7,11 @@
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: rgb(236 153 75);   
+    background-color: #bcb8b1;   
 }
 .form select{ 
     text-decoration: none;
-    background-color: rgb(115, 119, 123);
+    background-color: #5c80bc;
     color: white;
     padding: 10px;
     margin: 3px;
@@ -20,24 +20,11 @@
     transition: .1s;
     width: 150px;
 }
-.goBack {
-	padding: 6px;
-	width: 120px;
-	border: none;
-	border-radius: 10px;
-	font-size: 16px;
-	font-family: 'calibri';
-	margin: 10px;
-	background-color: #F2F3F4;
-}
 
-.goBack:hover {
-	background-color: #8a8a8a;
-}
 
 .button{
     text-decoration: none;
-    background-color: rgb(115, 119, 123);
+    background-color: #5c80bc;
     color: white;
     padding: 10px;
     margin: 3px;

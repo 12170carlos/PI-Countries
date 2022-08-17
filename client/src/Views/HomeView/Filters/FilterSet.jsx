@@ -51,7 +51,7 @@ export default function FilterSet() {
            name="ORDER"  
            defaultValue="select"
            onChange={(e) => handleOrder(e)}
-           className="select"
+           className="button"
            id="order"
            >
 
@@ -76,12 +76,12 @@ export default function FilterSet() {
           </select>
          
           <select 
-          className="continent"
+          className="button"
           name="" 
           id="continent"
           onChange={(e) => handleChange(e)}
           >
-            <option value="default" hidden>Selection Continent</option>
+            <option value="default" hidden>Continents</option>
             <option value="Asia">Asia</option>
             <option value="Americas">Americas</option>
             <option value="Africa">Africa</option>

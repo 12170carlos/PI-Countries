@@ -17,23 +17,26 @@ export default function PaginationComponent({
 }) {
 
   const country = useSelector((state) => state.allCountries);
+  const currenCountries = useSelector((state) => state.currentCountries)
 
-  console.log("country:", country)
-  const [pages, setPages] = useState(Math.round(country.length / countryPerPage));
+  
+  const [pages, setPages] = useState(Math.ceil(currenCountries.length / countryPerPage));
 
   
   
   function goToNextPage() {
-    console.log("pages:", pages)
+   
     
     setCurrentPage((page) => page + 1);
   }
+  
   function gotToPrevPage() {
     setCurrentPage((page) => page - 1);
   }
+
   function changePage(e) {
-    const pageNumber = Number(e.target.textContent);
-   
+    const pageNumber = Number(e.target.textContent)
+
     setCurrentPage(pageNumber);
   }
 
@@ -47,6 +50,13 @@ export default function PaginationComponent({
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [country])
 
+useEffect(() => {
+  setPages(Math.ceil(currenCountries.length / 10))
+
+ 
+  setCurrentPage(pages)
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [currenCountries])
 
   return ( 
     <>
@@ -72,18 +82,18 @@ export default function PaginationComponent({
             }`}
           >
             <span>{item}</span>
+            {console.log("item:", item)}
+             { console.log("currentPage", currentPage)}
           </button>
         ))}
 
         {/* next button */}
         <button
-          onClick={goToNextPage}
-
-         
-          
+          onClick={goToNextPage}   
           className={`next ${currentPage === pages ? "disable" : ""}`}
         >
-          next
+          next 
+          {console.log("pages:",pages)}
         </button>
       </div>
     </>

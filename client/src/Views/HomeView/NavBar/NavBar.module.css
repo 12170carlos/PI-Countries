@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-.container{ 
+.NavContainer{ 
     display: flex;
+    
     width: 100%;
     height: 8vh;
     justify-content: center;
@@ -9,7 +10,7 @@
 .NavContainer ul{ 
     display: flex;
     margin: auto;
-    padding:35px 0;
+    padding:35px 7 ;
     justify-content: space-between;
     align-items: center;
     width: 80%;
@@ -17,11 +18,12 @@
 }
 .NavContainer ul li{ 
     list-style: none;
-    color:rgb(241, 238, 233);
+    color: #bcb8b1;
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
     position: relative;
+    padding: 35px 5;
 }
 .link{ 
     text-decoration: none;
@@ -30,7 +32,7 @@
     content: ""; 
     height: 3px;
     width: 0%;
-    background: #d2812a;
+    background: #f9564f;
     position: absolute;
     left: 0;
     bottom: -8px;

@@ -25,5 +25,51 @@ export const AddCountryFormWrapper = styled.div`
 `
 
 export const AddCountryItemsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+
+    & > label {
+        color: #00d1ff;
+        margin-bottom: 5px ;
+    }
     
+`
+
+export const AddCountryForm = styled.form`
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+`
+
+export const AddCountryItemsWraper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+
+    & > label {
+        color: #00d1ff;
+        margin-bottom: 5px;
+    }
+`
+
+export const CreateCountryInput = styled.input`
+    font-size: 16px;
+  	font-family: 'Verdana', sans-serif;
+  	font-weight: 400;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.25);
+  	color: #e5f0ef;
+  	width: 220px;
+  	border: 2px solid #aaa;
+    ::placeholder{
+        color: lightgray;
+      } 
+      @media (max-width: 800px){
+          width: 80vw;
+      }
 `
